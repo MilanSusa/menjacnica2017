@@ -116,17 +116,17 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, String prodajniKurs, String kupovniKurs,
-			String srednjiKurs) {
+	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, double prodajniKurs, double kupovniKurs,
+			double srednjiKurs) {
 		try {
 			// Punjenje podataka o valuti
 			Valuta valuta = new Valuta();
 			valuta.setNaziv(naziv);
 			valuta.setSkraceniNaziv(skraceniNaziv);
 			valuta.setSifra(sifra);
-			valuta.setProdajni(Double.parseDouble(prodajniKurs));
-			valuta.setKupovni(Double.parseDouble(kupovniKurs));
-			valuta.setSrednji(Double.parseDouble(srednjiKurs));
+			valuta.setProdajni(prodajniKurs);
+			valuta.setKupovni(kupovniKurs);
+			valuta.setSrednji(srednjiKurs);
 			// Dodavanje valute u kursnu listu
 			menjacnica.dodajValutu(valuta);
 			// Osvezavanje glavnog prozora

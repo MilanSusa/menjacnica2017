@@ -163,9 +163,9 @@ public class DodajKursGUI extends JFrame {
 					String naziv = textFieldNaziv.getText();
 					String skraceniNaziv = textFieldSkraceniNaziv.getText();
 					int sifra = (Integer) (spinnerSifra.getValue());
-					String prodajniKurs = textFieldProdajniKurs.getText();
-					String kupovniKurs = textFieldKupovniKurs.getText();
-					String srednjiKurs = textFieldSrednjiKurs.getText();
+					double prodajniKurs = Double.parseDouble(textFieldProdajniKurs.getText());
+					double kupovniKurs = Double.parseDouble(textFieldKupovniKurs.getText());
+					double srednjiKurs = Double.parseDouble(textFieldSrednjiKurs.getText());
 					GUIKontroler.unesiKurs(naziv, skraceniNaziv, sifra, prodajniKurs, kupovniKurs, srednjiKurs);
 				}
 			});
