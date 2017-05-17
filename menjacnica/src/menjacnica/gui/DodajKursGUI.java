@@ -160,15 +160,13 @@ public class DodajKursGUI extends JFrame {
 			btnDodaj = new JButton("Dodaj");
 			btnDodaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Valuta valuta = new Valuta();
-					// Punjenje podataka o valuti
-					valuta.setNaziv(textFieldNaziv.getText());
-					valuta.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
-					valuta.setSifra((Integer) (spinnerSifra.getValue()));
-					valuta.setProdajni(Double.parseDouble(textFieldProdajniKurs.getText()));
-					valuta.setKupovni(Double.parseDouble(textFieldKupovniKurs.getText()));
-					valuta.setSrednji(Double.parseDouble(textFieldSrednjiKurs.getText()));
-					GUIKontroler.unesiKurs(valuta);
+					String naziv = textFieldNaziv.getText();
+					String skraceniNaziv = textFieldSkraceniNaziv.getText();
+					int sifra = (Integer) (spinnerSifra.getValue());
+					String prodajniKurs = textFieldProdajniKurs.getText();
+					String kupovniKurs = textFieldKupovniKurs.getText();
+					String srednjiKurs = textFieldSrednjiKurs.getText();
+					GUIKontroler.unesiKurs(naziv, skraceniNaziv, sifra, prodajniKurs, kupovniKurs, srednjiKurs);
 				}
 			});
 		}

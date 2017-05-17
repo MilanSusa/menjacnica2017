@@ -1,13 +1,13 @@
 package menjacnica.gui;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
 import java.awt.Dimension;
 
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
@@ -163,14 +163,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 			btnIzvrsiZamenu = new JButton("Izracunaj iznos");
 			btnIzvrsiZamenu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					try {
-						double konacniIznos = GUIKontroler.izvrsiZamenu(valuta, rdbtnProdaja.isSelected(),
-								Double.parseDouble(textFieldIznos.getText()));
-						textFieldKonacniIznos.setText("" + konacniIznos);
-					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(contentPane, e1.getMessage(), "Greska",
-								JOptionPane.ERROR_MESSAGE);
-					}
+					GUIKontroler.izvrsiZamenu(valuta, rdbtnProdaja.isSelected(), textFieldIznos.getText());
 				}
 			});
 			btnIzvrsiZamenu.setBounds(24, 234, 160, 25);
@@ -236,7 +229,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 		return lblKonacniIznos;
 	}
 
-	private JTextField getTextFieldKonacniIznos() {
+	public JTextField getTextFieldKonacniIznos() {
 		if (textFieldKonacniIznos == null) {
 			textFieldKonacniIznos = new JTextField();
 			textFieldKonacniIznos.setBounds(154, 193, 256, 25);

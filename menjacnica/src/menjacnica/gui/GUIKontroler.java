@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import menjacnica.Menjacnica;
 import menjacnica.MenjacnicaInterface;
@@ -115,8 +116,17 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void unesiKurs(Valuta valuta) {
+	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, String prodajniKurs, String kupovniKurs,
+			String srednjiKurs) {
 		try {
+			// Punjenje podataka o valuti
+			Valuta valuta = new Valuta();
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNaziv);
+			valuta.setSifra(sifra);
+			valuta.setProdajni(Double.parseDouble(prodajniKurs));
+			valuta.setKupovni(Double.parseDouble(kupovniKurs));
+			valuta.setSrednji(Double.parseDouble(srednjiKurs));
 			// Dodavanje valute u kursnu listu
 			menjacnica.dodajValutu(valuta);
 			// Osvezavanje glavnog prozora
@@ -139,8 +149,13 @@ public class GUIKontroler {
 		}
 	}
 
-	public static double izvrsiZamenu(Valuta valuta, boolean prodaja, double iznos) {
-		return menjacnica.izvrsiTransakciju(valuta, prodaja, iznos);
+	public static void izvrsiZamenu(Valuta valuta, boolean prodaja, String iznos) {
+		try {
+			double konacniIznos = menjacnica.izvrsiTransakciju(valuta, prodaja, Double.parseDouble(iznos));
+			izvrsiZamenuGUI.getTextFieldKonacniIznos().setText("" + konacniIznos);
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(menjacnicaGUI, e1.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 }
